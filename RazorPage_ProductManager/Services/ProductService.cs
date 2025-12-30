@@ -38,9 +38,8 @@ namespace RazorPage_ProductManager.Services
 
         public async Task UpdateProductAsync(Product product)
         {
-            var existingProduct = await _repo.GetByIdAsync(product.Id);
-            if (existingProduct == null) throw new Exception("Không tìm thấy sản phẩm để cập nhật");
-            await _repo.UpdateAsync(existingProduct);
+            
+            await _repo.UpdateAsync(product);
         }
     }
 }

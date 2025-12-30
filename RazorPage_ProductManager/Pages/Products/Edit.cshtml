@@ -1,13 +1,15 @@
 ﻿@page
-@model RazorPage_ProductManager.Pages.Products.CreateModel
+@model RazorPage_ProductManager.Pages.Products.EditModel
 @{
-    ViewData["Title"] = "Thêm mới";
+    ViewData["Title"] = "Chỉnh sửa";
 }
-<h1>THÊM MỚI</h1>
+<h1>CHỈNH SỬA</h1>
 <div class="row">
     <div class="col-8 align-content-center">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Product.Id"/>
+
             <div class="form-group mb-3">
                 <label asp-for="Product.Code" class="control-label"></label>
                 <input asp-for="Product.Code" class="form-control" />
@@ -34,15 +36,14 @@
                 <span asp-validation-for="Product.Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Lưu" class="btn btn-success" />
+                <input type="submit" value="Lưu thay đổi" class="btn btn-warning" />
                 <a asp-page="/Index" class="btn btn-secondary">Hủy</a>
             </div>
         </form>
     </div>
 </div>
-
-@section Scripts{
-@{
+@section Scripts {
+    @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
 }

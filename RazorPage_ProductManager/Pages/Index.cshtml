@@ -25,6 +25,10 @@
                 <td>@p.Price</td>
                 <td>@p.Quantity</td>
                 <td>@p.Description</td>
+                <td>
+                    <a asp-page="./Products/Edit" asp-route-id="@p.Id" class="btn btn-warning">Sửa</a>
+                    <a asp-page="./Products/Delete" asp-route-id="@p.Id" class="btn btn-danger">Xóa</a>
+                </td>
             </tr>
         }
         
