@@ -1,10 +1,33 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Trang Chủ";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<h1>DANH SÁCH SẢN PHẨM</h1>
+<p><a asp-page="./Products/Create" class="btn btn-primary">Thêm sản phẩm</a></p>
+<table>
+    <thead>
+        <tr>
+            <th>Mã</th>
+            <th>Tên</th>
+            <th>Giá</th>
+            <th>Số Lượng</th>
+            <th>Mục Đích</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(Product p in Model.Products)
+        {
+            <tr>
+                <td>@p.Code</td>
+                <td>@p.Name</td>
+                <td>@p.Price</td>
+                <td>@p.Quantity</td>
+                <td>@p.Description</td>
+            </tr>
+        }
+        
+    </tbody>
+    
+</table>

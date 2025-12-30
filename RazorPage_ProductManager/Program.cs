@@ -1,9 +1,20 @@
+﻿using Microsoft.EntityFrameworkCore;
+using RazorPage_ProductManager.Core.Interfaces;
+using RazorPage_ProductManager.Data;
+using RazorPage_ProductManager.Repositories;
+using RazorPage_ProductManager.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
-
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+// Đăng ký DI
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IProductService, ProductService>();
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
