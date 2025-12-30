@@ -21,8 +21,8 @@ namespace RazorPage_ProductManager.Pages.Products
             if (!ModelState.IsValid) return Page();
             try
             {
-                await _service.GetAllProductsAsync();
-                return RedirectToPage("./Index");
+                await _service.AddProductAsync(Product);
+                return RedirectToPage("/Index");
             }
             catch(Exception ex)
             {

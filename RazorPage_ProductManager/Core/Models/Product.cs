@@ -28,6 +28,8 @@ namespace RazorPage_ProductManager.Core.Models
         [Required(ErrorMessage = "Số lượng sản phẩm tồn kho không được để trống")]
         [Range(0, int.MaxValue, ErrorMessage = "Số tồn kho phải lớn hơn hoặc bằng 0")]
         public int Quantity { get; set; }
+
+        [Display(Name = "Mô tả")]
         public string Description { get; set; }
     }
 }

@@ -14,6 +14,7 @@ namespace RazorPage_ProductManager.Data
             modelBuilder.Entity<Product>(e =>
             {
                 e.Property(p => p.Price).HasColumnType("decimal(18, 2)");
+                e.Property(p => p.Description).IsRequired(false);
             });
         }
     }
