@@ -33,6 +33,7 @@ namespace RazorPage_ProductManager.Pages.Products
             catch(Exception ex)
             {
                 ModelState.AddModelError(string.Empty, ex.Message);
+                Product = await _service.GetProductByIdAsync(id.Value);
                 return Page();
             }
             
