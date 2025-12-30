@@ -10,5 +10,6 @@ namespace RazorPage_ProductManager.Core.Interfaces
         Task AddAsync(Product product);
         Task UpdateAsync(Product Product);
         Task DeleteAsync(int id);
+        Task<List<Product>> GetByKeywordsAsync(string keyword);
     }
 }

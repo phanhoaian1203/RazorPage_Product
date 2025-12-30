@@ -1,4 +1,5 @@
-﻿using RazorPage_ProductManager.Core.Interfaces;
+﻿using Microsoft.IdentityModel.Tokens;
+using RazorPage_ProductManager.Core.Interfaces;
 using RazorPage_ProductManager.Core.Models;
 
 namespace RazorPage_ProductManager.Services
@@ -27,6 +28,18 @@ namespace RazorPage_ProductManager.Services
         public async Task<List<Product>> GetAllProductsAsync()
         {
             return await _repo.GetAllAsync();
+        }
+
+        public async Task<List<Product>> GetByKeywordsAsync(string keyword)
+        {
+            if (keyword.IsNullOrEmpty())
+            {
+                return await _repo.GetAllAsync();
+            }
+            else
+            {
+                return await _repo.GetByKeywordsAsync(keyword);
+            }
         }
 
         public async Task<Product> GetProductByIdAsync(int id)

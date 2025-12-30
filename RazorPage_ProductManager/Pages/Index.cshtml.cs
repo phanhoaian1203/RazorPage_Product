@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.IdentityModel.Tokens;
 using RazorPage_ProductManager.Core.Interfaces;
 using RazorPage_ProductManager.Core.Models;
 using System.Threading.Tasks;
@@ -16,9 +17,20 @@ namespace RazorPage_ProductManager.Pages
         }
 
         public IList<Product> Products { get; set; }
-        public async Task OnGet()
+
+        [BindProperty(SupportsGet =true)]
+        public string SearchString { get; set; }
+        public async Task OnGetAsync()
         {
-            Products = await _service.GetAllProductsAsync();
+            if (!SearchString.IsNullOrEmpty())
+            {
+                Products = await _service.GetByKeywordsAsync(SearchString);
+            }
+            else
+            {
+                Products = await _service.GetAllProductsAsync();
+            }
+                
         }
     }
 }

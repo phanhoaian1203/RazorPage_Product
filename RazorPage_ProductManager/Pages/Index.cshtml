@@ -5,7 +5,19 @@
 }
 
 <h1>DANH SÁCH SẢN PHẨM</h1>
-<p><a asp-page="./Products/Create" class="btn btn-primary">Thêm sản phẩm</a></p>
+<div class="row mb-3">
+    <div class="col-md-6">
+        <form method="get">
+            <input type="text" name="SearchString" value="@Model.SearchString" class="form-control me-2" placeholder="nhập tên sản phẩm..."/>
+            <button type="submit" class="btn btn-outline-primary"> Tìm kiếm</button>
+            <a asp-page="./Index" class="btn btn-outline-secondary ms-2">Xóa lọc</a>
+        </form>
+    </div>
+    <div class="col-md-6 text-end" >
+        <a asp-page="./Products/Create" class="btn btn-primary">Thêm sản phẩm</a>
+    </div>
+</div>
+
 <table class="table table-bordered table-striped">
     <thead>
         <tr>

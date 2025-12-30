@@ -55,5 +55,11 @@ namespace RazorPage_ProductManager.Repositories
                 throw; 
             }
         }
+
+        public async Task<List<Product>> GetByKeywordsAsync(string keyword)
+        {
+            var products = _context.Products.Where(p => p.Name.Contains(keyword)).ToListAsync();
+            return await products;
+        }
     }
 }
