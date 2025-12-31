@@ -31,5 +31,7 @@ namespace RazorPage_ProductManager.Core.Models
 
         [Display(Name = "Mô tả")]
         public string Description { get; set; }
+
+        public string? Avatar { get; set; }
     }
 }
