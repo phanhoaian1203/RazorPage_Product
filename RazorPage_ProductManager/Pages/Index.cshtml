@@ -26,6 +26,7 @@
             <th>Giá</th>
             <th>Số Lượng</th>
             <th>Mục Đích</th>
+            <th>Ảnh</th>
         </tr>
     </thead>
     <tbody>
@@ -34,9 +35,19 @@
             <tr>
                 <td>@p.Code</td>
                 <td>@p.Name</td>
-                <td>@p.Price.ToString("N0")</td>
+                <td>@p.Price</td>
                 <td>@p.Quantity</td>
                 <td>@p.Description</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(p.Avatar))
+                    {
+                        <img src="~/images/@p.Avatar" alt="Ảnh SP" style="width: 50px; height: 50px; object-fit: cover; border-radius: 5px;" />
+                    }
+                    else
+                    {
+                        <span>Không có ảnh</span>
+                    }
+                </td>
                 <td>
                     <a asp-page="./Products/Edit" asp-route-id="@p.Id" class="btn btn-warning">Sửa</a>
                     <a asp-page="./Products/Delete" asp-route-id="@p.Id" class="btn btn-danger">Xóa</a>

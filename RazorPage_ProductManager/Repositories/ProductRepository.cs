@@ -38,9 +38,9 @@ namespace RazorPage_ProductManager.Repositories
         {
             return _context.Products.FirstOrDefaultAsync(p=>p.Id == id);
         }
-        public Task<Product?> GetByCodeAsync(string code)
+        public async Task<Product?> GetByCodeAsync(string code)
         {
-            return _context.Products.FirstOrDefaultAsync(p => p.Code == code);
+            return await _context.Products.AsNoTracking().FirstOrDefaultAsync(p => p.Code == code);
         }
         public async Task UpdateAsync(Product Product)
         {
